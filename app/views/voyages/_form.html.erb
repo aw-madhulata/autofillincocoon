@@ -1,0 +1,30 @@
+<%= form_with(model: voyage, class: "contents") do |form| %>
+  <% if voyage.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(voyage.errors.count, "error") %> prohibited this voyage from being saved:</h2>
+
+      <ul>
+        <% voyage.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5 containers">
+    <%= form.fields_for :containers do |container| %>
+      <%= render "container_fields", f: container %>
+    <% end %>
+  </div>
+  <div class="my-5">
+  <%= link_to_add_association "Add Cointainer", form, :containers, data: {association_insertion_node: ".containers", association_insertion_method: :append}, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"  %>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
