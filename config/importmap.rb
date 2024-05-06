@@ -6,3 +6,4 @@ pin "@hotwired/stimulus", to: "stimulus.min.js"
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14
+pin "slim-select" # @2.8.2

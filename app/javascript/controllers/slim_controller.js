@@ -1,9 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
+import SlimSelect from "slim-select"
 
 // Connects to data-controller="slim"
 export default class extends Controller {
 	static targets = ["number", "price", "size", "id"];
 	connect() {
+		new SlimSelect({
+			select: this.numberTarget
+		})
 	}
 
 	handleChange(event) {
